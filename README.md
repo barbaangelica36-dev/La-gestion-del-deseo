@@ -99,8 +99,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-// Guardar texto
-function saveText() {
+ {
   const text = document.getElementById("userText").value;
   if (text.trim() === "") return;
 
@@ -113,7 +112,6 @@ function saveText() {
   document.getElementById("status").innerText = "Texto guardado.";
 }
 
-// Mostrar textos guardados
 db.collection("actualizaciones")
   .orderBy("fecha", "desc")
   .onSnapshot(snapshot => {
@@ -126,4 +124,4 @@ db.collection("actualizaciones")
       div.textContent = doc.data().contenido;
       container.appendChild(div);
     });
-  });
+
